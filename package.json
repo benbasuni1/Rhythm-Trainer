@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build",
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot",
-    "build:prod": "webpack -p && cp src/index.html dist/index.html"
+    "build:prod": "webpack -p && cp src/index.html dist/index.html",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,12 @@
   "homepage": "https://github.com/ACODE91/Rhythm-Trainer#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
+    "express": "^4.16.3",
+    "express-static": "^1.2.5",
+    "path": "^0.12.7",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "react-key-handler": "^1.0.1"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
