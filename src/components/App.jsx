@@ -1,6 +1,8 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Tap from './Tap.jsx';
+import Timer from './Timer.jsx'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,19 +22,22 @@ export default class App extends React.Component {
     }
 
     metronomeController () {
-        if(this.state.started === false && this.state.BPM !== 0) {
-        this.state.started = true;
-        this.forceUpdate();
-        let interval = (60000)/this.state.BPM;
-        let startMetronome = setInterval(() => {
-            var metronome = new Audio();
-            metronome.src = "Metronome.mp3";
-            metronome.play();
-            if(this.state.started === false) {
-                clearInterval(startMetronome);
-            }
-        }, interval);
-        } 
+        // if(this.state.started === false && this.state.BPM !== 0) {
+        // this.state.started = true;
+        // this.forceUpdate();
+        // let interval = (60000)/this.state.BPM;
+        // let startMetronome = setInterval(() => {
+        //     var metronome = new Audio();
+        //     metronome.src = "Metronome.mp3";
+        //     metronome.play();
+        //     if(this.state.started === false) {
+        //         clearInterval(startMetronome);
+        //     }
+        // }, interval);
+        // } 
+        var metronome = new Audio();
+        metronome.src = "Metronome.mp3";
+        metronome.play();
     }
  
     changeBPM (e) {
@@ -55,8 +60,8 @@ export default class App extends React.Component {
             This is the App!
             <Tap tapFn={this.handleTap}/>
             <p>Current BPM: {this.state.BPM}</p>
+            <Timer message="testing" durationMs={5000} />
         </div>
       );
     }
   }
-
