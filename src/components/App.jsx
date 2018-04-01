@@ -10,7 +10,8 @@ export default class App extends React.Component {
       this.state = {
           inputs: [],
           BPM: 0,
-          started: false
+          started: false,
+          stopTime: 0
       }
     }
 
@@ -43,24 +44,32 @@ export default class App extends React.Component {
     changeBPM (e) {
         let setBPM = e.target.value;
         this.state.BPM = setBPM;
+        this.state.stopTime = (60000/setBPM) * 4;
+        this.forceUpdate();
+        console.log(this.state)
+    }
+
+    startMetronome () {
+
+        this.state.started = true;
         this.forceUpdate();
     }
 
     stopMetronome () {
         this.state.started = false;
-        this.forceUpdate();
+        this.forceUpdate(); 
     }
     
     render() {
       return (
         <div>
             <input type="number" placeholder="Enter BPM" name="BPM" onChange={this.changeBPM.bind(this)}></input>
-            <div className="metronome" onClick={this.metronomeController.bind(this)}>Start</div>
+            <div className="metronome" onClick={this.startMetronome.bind(this)}>Start</div>
             <div className="stopMetronome" onClick={this.stopMetronome.bind(this)}>Stop</div>
             This is the App!
             <Tap tapFn={this.handleTap}/>
             <p>Current BPM: {this.state.BPM}</p>
-            <Timer message="testing" durationMs={5000} />
+      {(this.state.started) ? <Timer message="testing" durationMs={this.state.stopTime} metronome={this.metronomeController}/> : <div></div> }
         </div>
       );
     }

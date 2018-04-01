@@ -4,11 +4,10 @@ const React = require('react');
 const ReactAnimationFrame = require('react-animation-frame');
  
 class Timer extends React.Component {
-    onAnimationFrame(time) {
+    onAnimationFrame(time, last) {
         const progress = Math.round(time / this.props.durationMs * 100);
         this.bar.style.width = `${progress}%`;
         this.props.metronome();
-
         if (progress === 100) {
             this.props.endAnimation();
         }
@@ -24,4 +23,4 @@ class Timer extends React.Component {
     }
 }
  
-module.exports = ReactAnimationFrame(Timer);
+module.exports = ReactAnimationFrame(Timer, 1000);
