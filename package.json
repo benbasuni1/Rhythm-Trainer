@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build",
+    "start-dev": "nodemon server/server.js",
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot",
     "build:prod": "webpack -p && cp src/index.html dist/index.html",
     "watch": "webpack --watch"
@@ -26,6 +27,7 @@
     "express-static": "^1.2.5",
     "path": "^0.12.7",
     "react": "^15.2.1",
+    "react-animation-frame": "^1.0.1",
     "react-dom": "^15.2.1",
     "react-key-handler": "^1.0.1"
   },
